@@ -9,10 +9,10 @@
 * A list of complete todos: could be gotten from list of all todos
 * A list of pending todos: could be gotten from list of all todos
 * A todo
-  * Text description
+  * Title: Text description
   * Completeness status: complete or pending
-  * A control for editing text description
-  * A (toggle) control for marking a todo complete or pending
+  * A control for editing title
+  * A (toggle) control to update status (marking a todo complete or pending)
   * A control to delete the todo
 * A form for creating a new, pending todo
 
@@ -23,10 +23,10 @@
 
 * A list of todos
   * A todo
-    * Description
-    * Description edit control (update)
-    * Completeness status
-    * Completeness toggle control (update)
+    * `title`
+    * Edit `title` control (update)
+    * `status` completeness
+    * Toggle/edit `status` control (update)
     * Delete ToDo (delete)
   * A form for creating a new todo
 
