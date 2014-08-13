@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<alps>
+
+  <link rel="self" href="http://www.michaelharrison.ws/todoapi/profile.alps.xml" />
+
+  <doc>
+    The Todo API is an example format for serving todos to all those JavaScript
+    ToDoMVC applications.
+    EXPERIMENTAL! This API definition is not complete. It is currently being fitted to
+    working examples. It is not intended to be published, used, or submitted to any
+    API-collection hubs in its current form.
+  </doc>
+
+  <descriptor id="todo-list" type="semantic">
+    <descriptor href="#todo" />
+  </descriptor>
+
+  <descriptor id="todo" type="semantic">
+    <doc>
+      A container for a todo item, which represents a task that a user has identified as
+      needing completion.
+    </doc>
+
+    <descriptor href="#title" />
+    <descriptor href="#status" />
+    <descriptor href="#post" />
+    <descriptor href="#update" />
+    <descriptor href="#delete" />
+  </descriptor>
+
+  <descriptor id="title" type="semantic">
+    <doc>
+      A descriptive and identifying text title. See section 4.2.14 of the Atom 
+      Syndication Format: RFC 4287.
+    </doc>
+  </descriptor>
+
+  <descriptor id="status" type="semantic">
+    <doc>
+      A representation of the status of the todo item. An atomic value such as 
+      "completed" or "incomplete".
+    </doc>
+  </descriptor>
+
+  <descriptor id="post" type="unsafe"
+    href="http://alps.io/activitystrea.ms/verbs#post" />
+
+  <descriptor id="update" type="idempotent"
+    href="http://alps.io/activitystrea.ms/verbs#update" />
+
+  <descriptor id="delete" type="idempotent"
+    href="http://alps.io/activitystrea.ms/verbs#post" />
+
+</alps>
