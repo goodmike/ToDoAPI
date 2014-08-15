@@ -1,0 +1,47 @@
+// serve with media-type 
+// application/vnd.collection+json;profile=http://example.org/profiles/vcard
+
+{ 
+    collection: { 
+        href: "http://mytodoapp.com/todos/yours",
+        items: [
+            {
+                href: "/todos/yours/abc123",
+                data: [
+                    {
+                        name: "title", 
+                        value: "Get organized"
+                    },
+                    {
+                        name: "status",
+                        value: "incomplete"
+                    }
+                ]
+            },
+            {
+                href: "/todos/yours/xyz456",
+                data: [
+                    {
+                        name: "title", 
+                        value: "eat more steak"
+                    },
+                    {
+                        name: "status",
+                        value: "complete"
+                    }
+                ]
+            },
+        ],
+        template: {
+            data: [
+                {
+                    prompt: "What needs doing?",
+                    name: "title",
+                    value: ""
+                }
+            ]
+        }
+    }
+}
+
+
