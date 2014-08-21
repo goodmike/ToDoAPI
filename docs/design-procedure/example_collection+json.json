@@ -1,9 +1,9 @@
 // serve with media-type 
-// application/vnd.collection+json;profile=http://example.org/profiles/vcard
+// application/vnd.collection+json;profile=http://www.michaelharrison.ws/todoapi/profile.alps.xml
 
 { 
     collection: { 
-        href: "http://mytodoapp.com/todos/yours",
+        href: "http://mytodoapp.com/todos",
         items: [
             {
                 href: "/todos/yours/abc123",
@@ -19,7 +19,7 @@
                 ]
             },
             {
-                href: "/todos/yours/xyz456",
+                href: "/todos/xyz456",
                 data: [
                     {
                         name: "title", 
