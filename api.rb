@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'json'
 
 require './config/environments'
+require './models'
 
 # {
 #     collection: {
@@ -47,55 +48,77 @@ require './config/environments'
 #     }
 # }
 
+# To do (heh):
+# * Content negotiation: https://github.com/mbklein/rack-conneg
+# * Custom MIME types: http://stackoverflow.com/questions/3309752
 
 get '/todos' do
+    # Just collection+json for now.
+    todos = Todo.order("created_at DESC")
+    representation = {
+        collection: {
+            href: "http://mytodoapp.com/todos",
+            items: generate_items(todos),
+            template: resource_template()
+        }
+    }
     response.headers["Content-Type"] = "application/vnd.collection+json;profile=http://www.michaelharrison.ws/todoapi/profile.alps.xml"
-    JSON.generate({
-    collection: {
-        href: "http://mytodoapp.com/todos",
-        items: [
+    JSON.generate(representation)
+
+end
+
+# To do
+# * Work out how a detail view should work
+
+get "/todos/:todo_id" do
+    todo = Todo.find(todo_id)
+    todo
+end
+
+post '/todos' do
+    new_todo = Todo.create(extract_parameters)
+    redirect_to "/todos/#{new_todo.id}"
+end
+
+get '/hi' do
+  "Hello World!"
+end
+
+def extract_parameters
+    params[:template][:data].reduce({}) { |ps, data|
+        ps[data[:title]] = data[:value]
+        ps
+    }
+end
+
+def resource_template
+    {
+        data: [
             {
-                href: "/todos/yours/abc123",
-                data: [
-                    {
-                        name: "title",
-                        value: "Get organized"
-                    },
-                    {
-                        name: "status",
-                        value: "incomplete"
-                    }
-                ]
-            },
-            {
-                href: "/todos/xyz456",
-                data: [
-                    {
-                        name: "title",
-                        value: "eat more steak"
-                    },
-                    {
-                        name: "status",
-                        value: "complete"
-                    }
-                ]
-            },
-        ],
-        template: {
+                prompt: "What needs doing?",
+                name: "title",
+                value: ""
+            }
+        ]
+    }
+end
+
+def generate_items(models)
+    models.map do |model|
+        {
+            href: "/todos/#{model.id}",
             data: [
                 {
-                    prompt: "What needs doing?",
                     name: "title",
-                    value: ""
+                    value: "#{model.value}"
+                },
+                {
+                    name: "status",
+                    value: model.completed ? "complete" : "incomplete"
                 }
             ]
         }
-    }
-})
-
-end
-get '/hi' do
-  "Hello World!"
+    end
 end
 
 after do
