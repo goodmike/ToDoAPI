@@ -1,5 +1,8 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 require 'json'
+
+require './config/environments'
 
 # {
 #     collection: {
@@ -93,4 +96,10 @@ get '/todos' do
 end
 get '/hi' do
   "Hello World!"
+end
+
+after do
+    # Close the connection after the request is done so that we don't
+    # deplete the ActiveRecord connection pool.
+    ActiveRecord::Base.connection.close
 end
