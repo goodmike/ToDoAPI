@@ -35,8 +35,8 @@ end
 post '/todos' do
     request_body = JSON.parse request.body.read
     attributes = request_body["template"]["data"]
-    title_attr = attributes.detect {|a| a["name"] == "title"}
-    Todo.create(value: title_attr["value"], completed: false)
+    description = attributes.detect {|a| a["name"] == "description"}
+    Todo.create(description: description["value"], completed: false)
 
     redirect "/todos"
 end
@@ -50,8 +50,8 @@ def resource_template
         data: [
             {
                 prompt: "What needs doing?",
-                name: "title",
-                value: ""
+                name: "description",
+                description: ""
             }
         ]
     }
@@ -63,8 +63,8 @@ def generate_items(models)
             href: "/todos/#{model.id}",
             data: [
                 {
-                    name: "title",
-                    value: "#{model.value}"
+                    name: "description",
+                    value: "#{model.description}"
                 },
                 {
                     name: "status",

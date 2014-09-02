@@ -1,6 +1,4 @@
-require "minitest/autorun"
-require "./api"
-require "rack/test"
+require "test_helper"
 
 class TestGetTodos < Minitest::Test
     include Rack::Test::Methods
@@ -9,11 +7,15 @@ class TestGetTodos < Minitest::Test
         Sinatra::Application
     end
 
+    def setup
+        DatabaseCleaner.start
+    end
+
     def test_post_with_params_ok
         to_do_value = "Random String TBD"
         params = { "template" => { "data" => [
             {
-                "name" => "title",
+                "name" => "description",
                 "value" => to_do_value
             }
         ]}}
@@ -23,5 +25,8 @@ class TestGetTodos < Minitest::Test
         assert last_response.ok?
     end
 
+    def teardown
+        DatabaseCleaner.clean
+    end
 end
 

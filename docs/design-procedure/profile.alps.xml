@@ -21,17 +21,16 @@
       needing completion.
     </doc>
 
-    <descriptor href="#title" />
+    <descriptor href="#description" />
     <descriptor href="#status" />
     <descriptor href="#post" />
     <descriptor href="#update" />
     <descriptor href="#delete" />
   </descriptor>
 
-  <descriptor id="title" type="semantic">
+  <descriptor id="description" type="semantic" href="http://schema.org/description">
     <doc>
-      A descriptive and identifying text title. See section 4.2.14 of the Atom 
-      Syndication Format: RFC 4287.
+      A short description of the todo item. See the schema.org Thing property "description."
     </doc>
   </descriptor>
 

@@ -9,7 +9,7 @@
                 href: "/todos/yours/abc123",
                 data: [
                     {
-                        name: "title", 
+                        name: "description", 
                         value: "Get organized"
                     },
                     {
@@ -22,7 +22,7 @@
                 href: "/todos/xyz456",
                 data: [
                     {
-                        name: "title", 
+                        name: "description", 
                         value: "eat more steak"
                     },
                     {
@@ -36,7 +36,7 @@
             data: [
                 {
                     prompt: "What needs doing?",
-                    name: "title",
+                    name: "description",
                     value: ""
                 }
             ]
