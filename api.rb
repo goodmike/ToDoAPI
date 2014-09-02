@@ -76,19 +76,16 @@ get "/todos/:todo_id" do
 end
 
 post '/todos' do
-    new_todo = Todo.create(extract_parameters)
-    redirect_to "/todos/#{new_todo.id}"
+    request_body = JSON.parse request.body.read
+    attributes = request_body["template"]["data"]
+    title_attr = attributes.detect {|a| a["name"] == "title"}
+    Todo.create(value: title_attr["value"], completed: false)
+
+    redirect "/todos"
 end
 
 get '/hi' do
   "Hello World!"
-end
-
-def extract_parameters
-    params[:template][:data].reduce({}) { |ps, data|
-        ps[data[:title]] = data[:value]
-        ps
-    }
 end
 
 def resource_template

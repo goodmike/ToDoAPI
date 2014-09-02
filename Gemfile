@@ -9,3 +9,7 @@ group :development do
     gem "tux"
 end
 
+group :development, :test do
+    gem "pry"
+end
+

@@ -13,4 +13,5 @@ class TestGetTodos < Minitest::Test
         get '/todos'
         assert last_response.ok?
     end
+
 end
