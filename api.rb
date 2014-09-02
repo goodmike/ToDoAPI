@@ -5,49 +5,6 @@ require 'json'
 require './config/environments'
 require './models'
 
-# {
-#     collection: {
-#         href: "http://mytodoapp.com/todos",
-#         items: [
-#             {
-#                 href: "/todos/yours/abc123",
-#                 data: [
-#                     {
-#                         name: "title",
-#                         value: "Get organized"
-#                     },
-#                     {
-#                         name: "status",
-#                         value: "incomplete"
-#                     }
-#                 ]
-#             },
-#             {
-#                 href: "/todos/xyz456",
-#                 data: [
-#                     {
-#                         name: "title",
-#                         value: "eat more steak"
-#                     },
-#                     {
-#                         name: "status",
-#                         value: "complete"
-#                     }
-#                 ]
-#             },
-#         ],
-#         template: {
-#             data: [
-#                 {
-#                     prompt: "What needs doing?",
-#                     name: "title",
-#                     value: ""
-#                 }
-#             ]
-#         }
-#     }
-# }
-
 # To do (heh):
 # * Content negotiation: https://github.com/mbklein/rack-conneg
 # * Custom MIME types: http://stackoverflow.com/questions/3309752
