@@ -13,6 +13,7 @@
 
   <descriptor id="todo-list" type="semantic">
     <descriptor href="#todo" />
+    <descriptor href="#post" />
   </descriptor>
 
   <descriptor id="todo" type="semantic">
@@ -23,7 +24,6 @@
 
     <descriptor href="#description" />
     <descriptor href="#status" />
-    <descriptor href="#post" />
     <descriptor href="#update" />
     <descriptor href="#delete" />
   </descriptor>
